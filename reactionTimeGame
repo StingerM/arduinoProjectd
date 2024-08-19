@@ -1,0 +1,70 @@
+echo "# arduinoProjectd" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/StingerM/arduinoProjectd.git
+git push -u origin main
+
+# Basically I watched this video from Robonyx where he briefly showed this 
+# head-to-head reaction time game and I wanted to make it and play with my 
+# brother but everything except a brief video explanation of the game was 
+# behind a paywall so I'll have to make it myself. Oh, and I want to understand 
+# control structures better and all that good stuff.
+
+
+####################################################################
+## Original Code from Arduino Project Hub user Rowan07
+## https://projecthub.arduino.cc/rowan07/a-simple-reflex-game-dcd2c8
+####################################################################
+
+# This is code I found that makes a similar game. I'm going to use this
+# to build the version I want. All comments are made by me as I try to 
+# figure out what each part does.  
+
+int ledPin = 13;  
+int sensorPin1 = 2;
+int long ranDelay = 0;
+int   sensorValue = 0;
+float realTime;
+
+void setup()
+{
+  Serial.begin(9600); #sets the communication rate with the Arduino at 9600 bits per second
+   pinMode(ledPin, OUTPUT);
+  pinMode(sensorPin1, INPUT); #makes the button
+}
+
+void loop(){
+   Serial.println("");
+  Serial.println("");
+  Serial.println("");
+   Serial.println("Push the button to start game");
+  
+  while (digitalRead(sensorPin1)==   0) {
+  }
+  Serial.println("");
+  Serial.println("");
+  Serial.println("");
+   Serial.println("Get Ready!");
+  delay(1000);
+  Serial.println("Get Set!");
+   delay(1000);
+  ranDelay = random(5000);
+  delay(ranDelay);
+  Serial.println("Go!");
+   
+  realTime = millis();
+  digitalWrite(ledPin, HIGH);
+ 
+  
+  while   (digitalRead(sensorPin1)== 0) {
+    
+  }
+  digitalWrite(ledPin, LOW);
+   Serial.println("Your time was");
+  realTime = millis()-realTime;
+  Serial.print(realTime/1000,2);
+   Serial.println(" seconds");
+ delay(2000); 
+}
